@@ -3,12 +3,12 @@
         {
             "id": 1,
             "type": "HTML Questions",
-            "Questions": [100,101,102,103,104]
+            "Questions": [100,101,103]
         },
         {
             "id": 2,
-            "type":"CSS Questions",
-            "Questions": [200,201,202,203,204]
+            "type": "CSS Questions",
+            "Questions": [200,203]
         }
     ],
         "Questions": [

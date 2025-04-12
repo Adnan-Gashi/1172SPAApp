@@ -1,0 +1,127 @@
+{
+    "Quiz Options": [
+        {
+            "id": 1,
+            "type": "HTML Questions",
+            "Questions": [100,101,102,103,104]
+        },
+        {
+            "id": 2,
+            "type":"CSS Questions",
+            "Questions": [200,201,202,203,204]
+        }
+    ],
+        "Questions": [
+       { 
+        "id": 100,
+        "qtype": "multiple-choice",
+        "question": "What does <Title> in HTML",
+        "options": ["It changes the title at the top of your website", 
+                    "It adds a stylized title to your webpage", 
+                    "It labels diagrams", 
+                    "The Title can not be seen on the website, only the metadata"],
+        "correct": "It changes the title at the top of your website",
+        "explanation": "The title changes the name of the tab at the top, Ex: When a new tab is opened in Google Chrome, it's title is 'New Tab', and not 'Google.com'"
+       },
+       { 
+        "id": 101,
+        "qtype": "multiple-choice",
+        "question": "",
+        "options": ["", 
+                    "", 
+                    "", 
+                    ""],
+        "correct": "",
+        "explanation": ""
+       },
+       { 
+        "id": 102,
+        "qtype": "multiple-choice",
+        "question": "",
+        "options": ["", 
+                    "", 
+                    "", 
+                    ""],
+        "correct": "",
+        "explanation": ""
+       },
+       { 
+        "id": 103,
+        "qtype": "multiple-choice",
+        "question": "",
+        "options": ["", 
+                    "", 
+                    "", 
+                    ""],
+        "correct": "",
+        "explanation": ""
+       },
+       { 
+        "id": 104,
+        "qtype": "multiple-choice",
+        "question": "",
+        "options": ["", 
+                    "", 
+                    "", 
+                    ""],
+        "correct": "",
+        "explanation": ""
+       },
+       { 
+        "id": 200,
+        "qtype": "multiple-choice",
+        "question": "",
+        "options": ["", 
+                    "", 
+                    "", 
+                    ""],
+        "correct": "",
+        "explanation": ""
+       },
+       { 
+        "id": 201,
+        "qtype": "multiple-choice",
+        "question": "",
+        "options": ["", 
+                    "", 
+                    "", 
+                    ""],
+        "correct": "",
+        "explanation": ""
+       },
+       { 
+        "id": 202,
+        "qtype": "multiple-choice",
+        "question": "",
+        "options": ["", 
+                    "", 
+                    "", 
+                    ""],
+        "correct": "",
+        "explanation": ""
+       },
+       { 
+        "id": 203,
+        "qtype": "multiple-choice",
+        "question": "",
+        "options": ["", 
+                    "", 
+                    "", 
+                    ""],
+        "correct": "",
+        "explanation": ""
+       },
+       { 
+        "id": 204,
+        "qtype": "multiple-choice",
+        "question": "",
+        "options": ["", 
+                    "", 
+                    "", 
+                    ""],
+        "correct": "",
+        "explanation": ""
+       }
+    ]
+
+}

@@ -1,5 +1,5 @@
 {
-    "Quiz Options": [
+    "quizzes": [
         {
             "id": 1,
             "type": "HTML Questions",

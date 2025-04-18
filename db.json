@@ -7,7 +7,7 @@
         },
         {
             "id": 2,
-            "type":"CSS Questions",
+            "type": "CSS Questions",
             "Questions": [200, 201, 202, 203, 204]
         }
     ],
@@ -16,23 +16,23 @@
         "id": 100,
         "qtype": "multipleChoice",
         "question": "What does <Title> do in HTML?",
-        "options": ["It changes the title at the top of your website", 
-                    "It adds a stylized title to your webpage", 
-                    "It labels diagrams", 
-                    "The Title can not be seen on the website, only the metadata"],
-        "correct": "It changes the title at the top of your website",
-        "explanation": "The title changes the name of the tab at the top, Ex: When a new tab is opened in Google Chrome, it's title is 'New Tab', and not 'Google.com'"
+        "options": ["It changes the title at the top of your website.", 
+                    "It adds a stylized title to your webpage.", 
+                    "It labels diagrams.", 
+                    "The Title can not be seen on the website, only the metadata."],
+        "correct": "It changes the title at the top of your website.",
+        "explanation": "The title changes the name of the tab at the top, Ex: When a new tab is opened in Google Chrome, it's title is 'New Tab', and not 'Google.com'."
        },
        { 
         "id": 101,
-        "qtype": "narative",
-        "question": "Is the following code snippet the correct way  to implement a css file into html?",
-        "image":"HTML Question 2.png",
-        "options": ["Yes this is Correct", 
-                    "No this is not Correct" 
+        "qtype": "narrative",
+        "question": "Is the following code snippet the correct way  to implement a CSS file into HTML?",
+        "image": "HTML Question 2.png",
+        "options": ["Yes, this is correct.", 
+                    "No, this is not correct." 
                     ],
-        "correct": "No this is not Correct",
-        "explanation": "This snipet of code is incorrect as the code uses an <src> tag instead of a <link> tag to call style.css"
+        "correct": "No, this is not correct.",
+        "explanation": "This snippet of code is incorrect as the code uses a <src> tag instead of a <link> tag to call style.css."
        },
        { 
         "id": 102,
@@ -48,7 +48,7 @@
        { 
         "id": 103,
         "qtype": "multipleChoice",
-        "question": "True or False: You can use the inline Javascript tag, <script> in both the head and body of an HTML document.",
+        "question": "True or False: You can use the inline JavaScript tag, <script>, in both the head and body of an HTML document.",
         "options": ["True", 
                     "False"],
         "correct": "True",

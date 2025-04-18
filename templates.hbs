@@ -1,0 +1,55 @@
+<script id="home" type="text/x-handlebars-template">
+  <div class="card p-4">
+    <h2 class="mb-4">Welcome to CodeQuiz!</h2>
+    <input type="text" id="name-input" class="form-control mb-3" placeholder="Enter your name" />
+    <select id="quiz-select" class="form-select mb-3">
+      <option value="1">JavaScript Basics</option>
+      <option value="2">Python Basics</option>
+    </select>
+    <button id="start-btn" class="btn btn-primary">Start Quiz</button>
+  </div>
+</script>
+
+<script id="quiz-template" type="text/x-handlebars-template">
+  <div class="card p-4">
+    <h4>Question {{currentIndex}} of {{total}}</h4>
+    <p class="text-muted">Elapsed Time: {{elapsed}}s | Score: {{score}}</p>
+    <h5>{{question.question}}</h5>
+
+    {{#if (eq question.qtype "multipleChoice")}}
+      {{#each question.options}}
+        <button class="btn btn-outline-primary d-block my-2 answer-btn">{{this}}</button>
+      {{/each}}
+    {{/if}}
+
+    {{#if (eq question.qtype "narrative")}}
+      <input type="text" class="form-control mb-3" id="text-answer" placeholder="Type your answer here">
+      <button class="btn btn-primary" id="submit-text">Submit</button>
+    {{/if}}
+
+    {{#if (eq question.qtype "imageSelect")}}
+      <div class="d-flex gap-3 flex-wrap">
+      {{#each question.images}}
+        <img src="{{this.src}}" alt="{{this.alt}}" data-correct="{{this.correct}}" class="question-img" />
+      {{/each}}
+      </div>
+    {{/if}}
+  </div>
+</script>
+
+<script id="feedback-template" type="text/x-handlebars-template">
+  <div class="card p-4">
+    <h5 class="text-danger">Incorrect</h5>
+    <p>{{explanation}}</p>
+    <button class="btn btn-primary" id="got-it">Got it</button>
+  </div>
+</script>
+
+<script id="result-template" type="text/x-handlebars-template">
+  <div class="card p-4 text-center">
+    <h2>{{message}}</h2>
+    <p>Your Score: {{score}}%</p>
+    <button class="btn btn-success me-2" id="retry">Retake Quiz</button>
+    <button class="btn btn-secondary" id="home">Home</button>
+  </div>
+</script>

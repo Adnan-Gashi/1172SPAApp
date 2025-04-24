@@ -1,0 +1,103 @@
+{
+  "quizzes": [
+    {
+      "id": 1,
+      "title": "JavaScript Fundamentals",
+      "questions": [1, 2, 3, 4, 5]
+    },
+    {
+      "id": 2,
+      "title": "Web Development Basics",
+      "questions": [6, 7, 8, 9, 10]
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple-choice",
+      "text": "Which of the following is not a JavaScript data type?",
+      "options": ["String", "Boolean", "Float", "Object"],
+      "correctAnswer": "Float",
+      "explanation": "There is no separate Float type as the JavaScript 'Number' data type represents both integers and float numbers."
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "text": "What keyword is used to declare a variable in JavaScript that cannot be reassigned?",
+      "correctAnswer": "const",
+      "explanation": "The 'const' keyword(short for constant) is used to declare variables that cannot be reassigned."
+    },
+    {
+      "id": 3,
+      "type": "image-selection",
+      "text": "Which image shows the correct HTML structure?",
+      "options": [
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/HTML-Structure-1.png",
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/HTML-Structure-2.png",
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/HTML-Structure-3.png"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Option 1 uses <h1> incorrectly in place of a <title>. Option 3 uses <header> and <footer> instead of <head> and <body>."
+    },
+    {
+      "id": 4,
+      "type": "multiple-choice",
+      "text": "What is the output of console.log(typeof []);",
+      "options": ["array", "object", "undefined", "null"],
+      "correctAnswer": "object",
+      "explanation": "In JavaScript, arrays are objects, so 'typeof []' returns 'object'."
+    },
+    {
+      "id": 5,
+      "type": "text",
+      "text": "What method is used to add an element to the end of an array in JavaScript? No '()' in answer",
+      "correctAnswer": "push",
+      "explanation": "The push() method is used to add one or more elements to the end of an array."
+    },
+    {
+      "id": 6,
+      "type": "multiple-choice",
+      "text": "Which CSS property is used to change the text color?",
+      "options": ["color", "text-color", "font-color", "text-style"],
+      "correctAnswer": "color",
+      "explanation": "The 'color' property in CSS is used to set the color of text."
+    },
+    {
+      "id": 7,
+      "type": "text",
+      "text": "What HTML tag is used to create a hyperlink? <?>",
+      "correctAnswer": "a",
+      "explanation": "The <a> tag is used to create hyperlinks in HTML."
+    },
+    {
+      "id": 8,
+      "type": "image-selection",
+      "text": "Which of the following shows the correct way to change the text color for all paragraphs in a file?",
+      "options": [
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/CSS-Selector-1.png",
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/CSS-Selector-2.png",
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/CSS-Selector-3.png"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The first inamge shows the correct way to change the text in all paragraphs. a '#' refers to elements that have an id = p, and a '.' refers to elements that have a class = p."
+    },
+    {
+      "id": 9,
+      "type": "multiple-choice",
+      "text": "What does CSS stand for?",
+      "options": ["Cascading Style Sheets", 
+                     "Compact Style Sheets", 
+                     "Color Shape Stencil", 
+                     "Creative Style System"],
+      "correctAnswer": "Cascading Style Sheets",
+      "explanation": "The correct meaning for CSS is Cascading Style Sheets."
+    },
+    {
+      "id": 10,
+      "type": "text",
+      "text": "What does the acronym DOM stand for in web development?",
+      "correctAnswer": "Document Object Model",
+      "explanation": "The Document Object Model (DOM) is a programming interface for web documents."
+    }
+  ]
+}

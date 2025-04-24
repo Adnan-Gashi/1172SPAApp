@@ -8,7 +8,7 @@ let startTime = null;
 let timerInterval = null;
 
 // API endpoint
-const API_BASE_URL = 'https://my-json-server.typicode.com/Adnan-Gashi/172SPAApp';
+const API_BASE_URL = 'https://my-json-server.typicode.com/Adnan-Gashi/1172SPAApp';
 
 // Compiling HBS templates
 const welcomeTemplate = Handlebars.compile(document.getElementById('welcome-template').innerHTML);

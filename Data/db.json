@@ -32,9 +32,9 @@
       "type": "image-selection",
       "text": "Which image shows the correct HTML structure?",
       "options": [
-        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/HTML-Structure-1.png",
-        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/HTML-Structure-2.png",
-        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/HTML-Structure-3.png"
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/Images/HTML-Structure-1.png",
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/Images/HTML-Structure-2.png",
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/Images/HTML-Structure-3.png"
       ],
       "correctAnswer": 1,
       "explanation": "Option 1 uses <h1> incorrectly in place of a <title>. Option 3 uses <header> and <footer> instead of <head> and <body>."
@@ -74,9 +74,9 @@
       "type": "image-selection",
       "text": "Which of the following shows the correct way to change the text color for all paragraphs in a file?",
       "options": [
-        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/CSS-Selector-1.png",
-        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/CSS-Selector-2.png",
-        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/images/CSS-Selector-3.png"
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/Images/CSS-Selector-1.png",
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/Images/CSS-Selector-2.png",
+        "https://raw.githubusercontent.com/Adnan-Gashi/1172SPAApp/main/Images/CSS-Selector-3.png"
       ],
       "correctAnswer": 0,
       "explanation": "The first inamge shows the correct way to change the text in all paragraphs. a '#' refers to elements that have an id = p, and a '.' refers to elements that have a class = p."

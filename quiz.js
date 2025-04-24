@@ -1,121 +1,187 @@
-const API_BASE = 'https://my-json-server.typicode.com/Adnan-Gashi/1172SPAApp';
+// Quiz module variables
+let quizId, studentName, questions = [], currentQuestionIndex = 0, totalQuestions = 0;
+let score = 0, timer = null, timerSeconds = 0, currentQuestion = null;
 
-let state = {
-  taker: '',
-  quizId: null,
-  currentQuestion: 0,
-  score: 0,
-  startTime: null,
-  total: 0,
-  questionIds: [],
-};
-
-Handlebars.registerHelper('eq', (a, b) => a === b);
-
-
-
-function loadTemp(id) {
-  const source = document.getElementById(id).innerHTML;
-  return Handlebars.compile(source);
+// Initialize quiz
+function initQuiz(id, name) {
+  quizId = id;
+  studentName = name;
+  currentQuestionIndex = 0;
+  score = 0;
+  timerSeconds = 0;
+  
+  // Start timer and load questions
+  startTimer();
+  loadQuestions();
 }
 
-function render(tempFunc, context = {}) {
-  document.getElementById('app').innerHTML = tempFunc(context);
+// Timer functions
+function startTimer() {
+  timerSeconds = 0;
+  updateTimerDisplay();
+  timer = setInterval(() => {
+    timerSeconds++;
+    updateTimerDisplay();
+  }, 1000);
 }
 
-function showHome() {
-  const homeTemp = loadTemp('home');
-  render(homeTemp);
-  document.getElementById('start-btn').onclick = start;
+function updateTimerDisplay() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  document.getElementById('timer').textContent = 
+    `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-async function start() {
-  state.taker = document.getElementById('name-input').value;
-  state.quizId = document.getElementById('quiz-select').value;
-  state.score = 0;
-  state.currentQuestion = 0;
-  state.startTime = Date.now();
-
-  const quiz = await fetch(`${API_BASE}/quizzes/${state.quizId}`).then(r => r.json());
-  state.questionIds = quiz.Questions;
-  state.total = state.questionIds.length;
-  loadNextQuestion();
-}
-
-async function loadNextQuestion() {
-  if (state.currentQuestion >= state.total) {
-    return showResult();
+function stopTimer() {
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
   }
+}
 
-  const questionId = state.questionIds[state.currentQuestion];
-  const question = await fetch(`${API_BASE}/Questions/${questionId}`).then(r => r.json());
-  const quizTemp = loadTemp('quiz-template');
+// Load quiz questions
+function loadQuestions() {
+  fetch(`https://my-json-server.typicode.com/Adnan-Gashi/1172SPAApp/quizzes/${quizId}`)
+    .then(response => response.ok ? response.json() : Promise.reject('Network error'))
+    .then(quizData => {
+      questions = quizData.questionIds || [];
+      totalQuestions = questions.length;
+      document.getElementById('questionCounter').textContent = `Question 1 of ${totalQuestions}`;
+      
+      // Load first question
+      if (questions.length > 0) {
+        loadQuizQuestion(questions[0]);
+      }
+    })
+    .catch(error => console.error('Error loading quiz:', error));
+}
 
-  render(quizTemp, {
-    question,
-    currentIndex: state.currentQuestion + 1,
-    total: state.total,
-    score: state.score,
-    elapsed: Math.floor((Date.now() - state.startTime) / 1000)
+// Load a specific question
+function loadQuizQuestion(questionId) {
+  fetch(`https://my-json-server.typicode.com/Adnan-Gashi/1172SPAApp/questions/${questionId}`)
+    .then(response => response.ok ? response.json() : Promise.reject('Network error'))
+    .then(questionData => {
+      currentQuestion = questionData;
+      
+      // Render the question based on its type
+      if (questionData.type === "multipleChoice") {
+        renderMultipleChoiceQuestion(questionData);
+      } else if (questionData.type === "narrative") {
+        renderNarrativeQuestion(questionData);
+      } else if (questionData.type === "imageSelection") {
+        renderImageSelectionQuestion(questionData);
+      }
+      
+      document.getElementById('questionCounter').textContent = 
+        `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+    })
+    .catch(error => console.error('Error loading question:', error));
+}
+
+// Render different question types
+function renderMultipleChoiceQuestion(questionData) {
+  const container = document.getElementById('question-container');
+  container.innerHTML = `
+    <h3>${questionData.question}</h3>
+    <div class="options-container">
+      ${questionData.options.map(option => 
+        `<button class="option-btn" onclick="checkAnswer(${option.id})">${option.text}</button>`
+      ).join('')}
+    </div>
+  `;
+}
+
+function renderNarrativeQuestion(questionData) {
+  const container = document.getElementById('question-container');
+  container.innerHTML = `
+    <h3>${questionData.question}</h3>
+    <input type="text" class="narrative-input form-control" id="narrativeAnswer" placeholder="Type your answer here...">
+    <button class="btn btn-primary submit-btn" onclick="checkNarrativeAnswer()">Submit Answer</button>
+  `;
+}
+
+function renderImageSelectionQuestion(questionData) {
+  const container = document.getElementById('question-container');
+  
+  // Create question text
+  let html = `<h3>${questionData.question}</h3><div class="image-options-container">`;
+  
+  // Create image options
+  questionData.options.forEach((option, index) => {
+    const imagePath = !option.imagePath.startsWith('http') && !option.imagePath.startsWith('/') 
+      ? `./images/${option.imagePath}` 
+      : option.imagePath;
+      
+    const label = option.label || `Option ${index + 1}`;
+    
+    html += `
+      <div class="image-option" onclick="checkAnswer(${option.id})">
+        <img src="${imagePath}" alt="${label}" onerror="this.onerror=null; this.parentNode.innerHTML += '<div>Image failed to load</div>';">
+        <p>${label}</p>
+      </div>
+    `;
   });
-
-  handleQuestionInteraction(question);
+  
+  html += '</div>';
+  container.innerHTML = html;
+  
+  // Debug image paths
+  console.log('Image paths:', questionData.options.map(o => o.imagePath));
 }
 
-function handleQuestionInteraction(question) {
-  if (question.qtype === 'multipleChoice') {
-    document.querySelectorAll('.answer-btn').forEach(btn => {
-      btn.onclick = () => handleAnswer(btn.textContent === question.correct, question.explanation);
-    });
-  } else if (question.qtype === 'narrative') {
-    document.getElementById('submit-text').onclick = () => {
-      const ans = document.getElementById('text-answer').value.trim().toLowerCase();
-      handleAnswer(ans === question.answer.toLowerCase(), question.explanation);
-    };
-  } else if (question.qtype === 'image-select') {
-    document.querySelectorAll('.question-img').forEach(img => {
-      img.onclick = () => {
-        const isCorrect = img.dataset.correct === 'true';
-        handleAnswer(isCorrect, question.explanation);
-      };
-    });
-  }
-}
-
-function handleAnswer(isCorrect, explanation) {
+// Answer checking functions
+function checkAnswer(selectedOptionId) {
+  const isCorrect = selectedOptionId === currentQuestion.correctAnswer;
+  
   if (isCorrect) {
-    state.score++;
-    const el = document.createElement('div');
-    el.className = 'alert alert-success text-center mt-3';
-    el.textContent = ['Great!', 'Awesome!', 'Nice work!'][Math.floor(Math.random() * 3)];
-    document.getElementById('app').appendChild(el);
-    setTimeout(() => {
-      state.currentQuestion++;
-      loadNextQuestion();
-    }, 1000);
+    score++;
+    document.getElementById('scoreValue').textContent = score;
+    window.showCorrectFeedback(getRandomEncouragingMessage());
   } else {
-    const feedbackTmpl = loadTemp('feedback-template');
-    render(feedbackTmpl({ explanation }));
-    document.getElementById('got-it').onclick = () => {
-      state.currentQuestion++;
-      loadNextQuestion();
-    };
+    window.showIncorrectFeedback(currentQuestion.explanation);
   }
 }
 
-function showResult() {
-  const percent = Math.round((state.score / state.total) * 100);
-  const resultTmpl = loadTemp('result-template');
-  render(resultTmpl({
-    score: percent,
-    message: percent >= 80 ? `Congratulations ${state.taker}, You Pass the Quiz!` : `Sorry ${state.taker}, You Fail the Quiz.`
-  }));
-
-  document.getElementById('retry').onclick = () => start();
-  document.getElementById('home').onclick = () => showHome();
+function checkNarrativeAnswer() {
+  const userAnswer = document.getElementById('narrativeAnswer').value.trim().toLowerCase();
+  const correctAnswers = Array.isArray(currentQuestion.correctAnswer) 
+    ? currentQuestion.correctAnswer.map(a => a.toLowerCase())
+    : [currentQuestion.correctAnswer.toLowerCase()];
+  
+  if (correctAnswers.includes(userAnswer)) {
+    score++;
+    document.getElementById('scoreValue').textContent = score;
+    window.showCorrectFeedback(getRandomEncouragingMessage());
+  } else {
+    window.showIncorrectFeedback(currentQuestion.explanation);
+  }
 }
 
-// Initialize
-(async () => {
-  showHome();
-})();
+// Load next question or finish quiz
+function loadNextQuestion() {
+  currentQuestionIndex++;
+  
+  if (currentQuestionIndex < totalQuestions) {
+    loadQuizQuestion(questions[currentQuestionIndex]);
+  } else {
+    finishQuiz();
+  }
+}
+
+function finishQuiz() {
+  stopTimer();
+  const scorePercentage = Math.round((score / totalQuestions) * 100);
+  window.showResults(scorePercentage, timerSeconds);
+}
+
+// Helper function
+function getRandomEncouragingMessage() {
+  const messages = ['Excellent!', 'Well done!', 'Awesome!', 'Brilliant!', 'Great job!'];
+  return messages[Math.floor(Math.random() * messages.length)];
+}
+
+// Expose necessary functions
+window.initQuiz = initQuiz;
+window.loadNextQuestion = loadNextQuestion;
+window.checkAnswer = checkAnswer;
+window.checkNarrativeAnswer = checkNarrativeAnswer;

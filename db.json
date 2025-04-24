@@ -1,121 +1,210 @@
 {
     "quizzes": [
-        {
-            "id": 1,
-            "type": "HTML Questions",
-            "Questions": [100, 101, 102, 103, 104]
-        },
-        {
-            "id": 2,
-            "type": "CSS Questions",
-            "Questions": [200, 201, 202, 203, 204]
-        }
+      {
+        "id": 1,
+        "title": "JavaScript Fundamentals",
+        "questionIds": [1, 2, 3, 4, 5]
+      },
+      {
+        "id": 2,
+        "title": "HTML & CSS Basics",
+        "questionIds": [101, 102, 103, 104, 105]
+      }
     ],
-        "Questions": [
-       { 
-        "id": 100,
-        "qtype": "multipleChoice",
-        "question": "What does <Title> do in HTML?",
-        "options": ["It changes the title at the top of your website.", 
-                    "It adds a stylized title to your webpage.", 
-                    "It labels diagrams.", 
-                    "The Title can not be seen on the website, only the metadata."],
-        "correct": "It changes the title at the top of your website.",
-        "explanation": "The title changes the name of the tab at the top, Ex: When a new tab is opened in Google Chrome, it's title is 'New Tab', and not 'Google.com'."
-       },
-       { 
+    "questions": [
+      {
+        "id": 1,
+        "type": "multipleChoice",
+        "question": "Which of the following is not a JavaScript data type?",
+        "options": [
+          {
+            "id": 1,
+            "text": "Number"
+          },
+          {
+            "id": 2,
+            "text": "Boolean"
+          },
+          {
+            "id": 3,
+            "text": "String"
+          },
+          {
+            "id": 4,
+            "text": "Character"
+          }
+        ],
+        "correctAnswer": 4,
+        "explanation": "JavaScript does not have a Character data type. Characters in JavaScript are represented as single-character strings."
+      },
+      {
+        "id": 2,
+        "type": "narrative",
+        "question": "What function would you use to print something to the console in JavaScript?",
+        "correctAnswer": "console.log",
+        "explanation": "console.log() is the function used to print or log messages to the console in JavaScript."
+      },
+      {
+        "id": 3,
+        "type": "multipleChoice",
+        "question": "What does the '===' operator do in JavaScript?",
+        "options": [
+          {
+            "id": 1,
+            "text": "Assigns a value to a variable"
+          },
+          {
+            "id": 2,
+            "text": "Compares values and types for equality"
+          },
+          {
+            "id": 3,
+            "text": "Compares values for equality, not types"
+          },
+          {
+            "id": 4,
+            "text": "Checks if a variable exists"
+          }
+        ],
+        "correctAnswer": 2,
+        "explanation": "The === operator (strict equality) compares both the values and the types for equality, returning true only if both match."
+      },
+      {
+        "id": 4,
+        "type": "multipleChoice",
+        "question": "Which method adds one or more elements to the end of an array in JavaScript?",
+        "options": [
+          {
+            "id": 1,
+            "text": "push()"
+          },
+          {
+            "id": 2,
+            "text": "pop()"
+          },
+          {
+            "id": 3,
+            "text": "unshift()"
+          },
+          {
+            "id": 4,
+            "text": "shift()"
+          }
+        ],
+        "correctAnswer": 1,
+        "explanation": "The push() method adds one or more elements to the end of an array and returns the new length of the array."
+      },
+      {
+        "id": 5,
+        "type": "narrative",
+        "question": "What keyword is used to define a function in JavaScript?",
+        "correctAnswer": "function",
+        "explanation": "The 'function' keyword is used to define a function in JavaScript."
+      },
+      {
         "id": 101,
-        "qtype": "narrative",
-        "question": "Is the following code snippet the correct way  to implement a CSS file into HTML?",
-        "image": "HTML Question 2.png",
-        "options": ["Yes, this is correct.", 
-                    "No, this is not correct." 
-                    ],
-        "correct": "No, this is not correct.",
-        "explanation": "This snippet of code is incorrect as the code uses a <src> tag instead of a <link> tag to call style.css."
-       },
-       { 
+        "type": "imageSelection",
+        "question": "Which image shows the correct way to structure an HTML document?",
+        "options": [
+          {
+            "id": 1,
+            "imagePath": "correct-html.png",
+            "label": "Option 1"
+          },
+          {
+            "id": 2,
+            "imagePath": "incorrect-html-1.png",
+            "label": "Option 2"
+          },
+          {
+            "id": 3,
+            "imagePath": "incorrect-html-2.png",
+            "label": "Option 3"
+          }
+        ],
+        "correctAnswer": 1,
+        "explanation": "The first image shows the correct HTML structure with proper nesting of DOCTYPE, html, head, and body elements."
+      },
+      {
         "id": 102,
-        "qtype": "imageSelect",
-        "question": "Which of the following is the correct way to implement an <a> tag with a link?",
-        "image": [{"src": "HTML Question 3 Op 1.png", "alt": "img1", "correct": false}, 
-                  {"src": "HTML Question 3 Op 2.png", "alt": "img1", "correct": false}, 
-                  {"src": "HTML Question 3 Op 3.png", "alt": "img1", "correct": true},
-                  {"src": "HTML Question 3 Op 4.png", "alt": "img1", "correct": false}
-                ],
-        "explanation": "The correct way to use the <a> tag to link a website is to use href(hypertext reference)."
-       },
-       { 
+        "type": "multipleChoice",
+        "question": "Which CSS property is used to change the text color of an element?",
+        "options": [
+          {
+            "id": 1,
+            "text": "text-color"
+          },
+          {
+            "id": 2,
+            "text": "color"
+          },
+          {
+            "id": 3,
+            "text": "font-color"
+          },
+          {
+            "id": 4,
+            "text": "text-style"
+          }
+        ],
+        "correctAnswer": 2,
+        "explanation": "The 'color' property is used to change the text color of an element in CSS."
+      },
+      {
         "id": 103,
-        "qtype": "multipleChoice",
-        "question": "True or False: You can use the inline JavaScript tag, <script>, in both the head and body of an HTML document.",
-        "options": ["True", 
-                    "False"],
-        "correct": "True",
-        "explanation": "The <script> tag can be used in both the head and the body. When used in the head the script runs before the page loads, and if the script is in the body, it runs after the HTML is loaded"
-       },
-       { 
+        "type": "narrative",
+        "question": "What HTML tag is used to create a hyperlink?",
+        "correctAnswer": "a",
+        "explanation": "The <a> (anchor) tag is used to create hyperlinks in HTML."
+      },
+      {
         "id": 104,
-        "qtype": "multipleChoice",
-        "question": "Which tag provides the largest text?",
-        "options": ["<h1>", 
-                    "<h6>", 
-                    "<header>", 
-                    "<footer>"],
-        "correct": "<h1>",
-        "explanation": "With the h tag, the higher the number, the smaller the font size. <header> and <footer> dont dictate size, just position on a website"
-       },
-       { 
-        "id": 200,
-        "qtype": "multipleChoice",
-        "question": "True or False: An ID can start with a number",
-        "options": ["True", 
-                    "False"],
-        "correct": "False",
-        "explanation": "An ID cannot start with a number according to the naming conventions. When naming variables, they should be lowercase with a hyphen/camelCase, not begin with a number, and have descriptive names"
-       },
-       { 
-        "id": 201,
-        "qtype": "multipleChoice",
-        "question": "True or False: 'color:' changes the color of your background",
-        "options": ["True", 
-                    "False"
-                    ],
-        "correct": "False",
-        "explanation": "'color:' only changes the color of the text-font, 'color-background' changes the color of the background"
-       },
-       { 
-        "id": 202,
-        "qtype": "narrative",
-        "question": "Johnny wants to change the font for only the <p> tag in a <div>. How should he call upon it?",
-        "options": ["p {}", 
-                    "p.div {}", 
-                    "div p {}", 
-                    "div, p {}"],
-        "correct": "div p {}",
-        "explanation": "The correct answer is div p {}. p {} changes all of the <p> in the HTML, p.div{} would mean that <div> is a class of <p>, and div, p {} makes it so that all changes applied to <div> apply to <p> as well."
-       },
-       { 
-        "id": 203,
-        "qtype": "imageSelect",
-        "question": "Which of the following is the correct way it implement a change to an ID",
-        "image": [{"src": "CSS Question 3 Op 1.png", "alt": "img1", "correct": false}, 
-                  {"src": "CSS Question 3 Op 2.png", "alt": "img2", "correct": true}, 
-                  {"src": "CSS Question 3 Op 3.png", "alt": "img3", "correct": false} 
-                 ],
-        "explanation": "The correct selector for ID is '#', option 1 is used when selecting a tag, and the last option is used when selecting a class"
-       },
-       { 
-        "id": 204,
-        "qtype": "multipleChoice",
-        "question": "What does CSS stand for?",
-        "options": ["Cascading Style Sheets", 
-                    "Compact Style Sheets", 
-                    "Color Shape Stencil", 
-                    "Creative Style System"],
-        "correct": "Cascading Style Sheets",
-        "explanation": "The correct meaning for CSS is Cascading Style Sheets."
-       }
+        "type": "multipleChoice",
+        "question": "Which CSS property is used to add space between the border and content of an element?",
+        "options": [
+          {
+            "id": 1,
+            "text": "margin"
+          },
+          {
+            "id": 2,
+            "text": "padding"
+          },
+          {
+            "id": 3,
+            "text": "spacing"
+          },
+          {
+            "id": 4,
+            "text": "border-spacing"
+          }
+        ],
+        "correctAnswer": 2,
+        "explanation": "The 'padding' property adds space between the border and the content of an element in CSS."
+      },
+      {
+        "id": 105,
+        "type": "imageSelection",
+        "question": "Which image represents a responsive design layout?",
+        "options": [
+          {
+            "id": 1,
+            "imagePath": "fixed-layout.png",
+            "label": "Fixed Layout"
+          },
+          {
+            "id": 2,
+            "imagePath": "responsive-layout.png",
+            "label": "Responsive Layout"
+          },
+          {
+            "id": 3,
+            "imagePath": "fluid-layout.png",
+            "label": "Fluid Layout"
+          }
+        ],
+        "correctAnswer": 2,
+        "explanation": "The second image shows a responsive design layout that adapts to different screen sizes."
+      }
     ]
-
-}
+  }
